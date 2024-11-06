@@ -1,0 +1,64 @@
+public class Account {
+    private String username;
+    private String email;
+    private String role;
+    private boolean isActive;
+
+    public Account(String username, String email, String role) {
+        this.username = username;
+        this.email = email;
+        this.role = role;
+        this.isActive = true; // Account is active by default
+    }
+
+    // Getters and Setters
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public boolean isActive() {
+        return isActive;
+    }
+
+    // Edit user role (admin functionality)
+    public void editRole(String newRole) {
+        if (this.role.equals("admin")) {
+            this.role = newRole;
+            System.out.println("Role updated to: " + newRole);
+        } else {
+            System.out.println("Only admins can edit roles.");
+        }
+    }
+
+    // Deactivate an account (admin functionality)
+    public void deactivateAccount(Account user) {
+        if (this.role.equals("admin")) {
+            user.isActive = false;
+            System.out.println("Account " + user.username + " has been deactivated.");
+        } else {
+            System.out.println("Only admins can deactivate accounts.");
+        }
+    }
+
+    // Reset password method
+    public void resetPassword() {
+        // Here, implement actual password reset functionality (e.g., email reset link)
+        System.out.println("Password reset request sent to email: " + email);
+    }
+}
